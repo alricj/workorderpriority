@@ -2,6 +2,7 @@ package com.aspect.wop.service;
 
 import java.text.ParseException;
 import java.util.List;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -33,8 +34,8 @@ public class WorkOrderService {
 		wo.setWoclassInt(classInt);
 		wo.setWoclass(theclass[1]);
 		WorkOrderUtil.staticQUE.enqueue(wo);
+		
 		return wo;
- 
 	}
 	
 	//scenario 2
@@ -45,8 +46,10 @@ public class WorkOrderService {
 		// made this call to trigger the sorting
 		List<WorkOrder> workorderids=WorkOrderUtil.staticQUE.getSortIdList();
 		WorkOrder wo  = WorkOrderUtil.staticQUE.dequeue();
+		
 		return wo;
 	}
+
 	
 	//scenario 3
 	@GET
@@ -54,6 +57,7 @@ public class WorkOrderService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<WorkOrder> getListOfIds() throws ParseException{
 		List<WorkOrder> workorderids=WorkOrderUtil.staticQUE.getSortIdList();
+		
 		return workorderids;
 	}
 	
