@@ -1,14 +1,17 @@
 package com.aspect.wop.pojo;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @XmlRootElement
-public class WorkOrder {
+public class WorkOrder implements Serializable {
 	
-
+	private static final long serialVersionUID = 6166L;
+	
 	long id;
 	String date;
 	long timeMilisec;
@@ -23,9 +26,6 @@ public class WorkOrder {
 		this.woclassInt = woclassInt;
 	}
 
-
-	
-	
 
 
 	public WorkOrder() {
@@ -153,15 +153,6 @@ public class WorkOrder {
 	}
 	
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		
-		
-
-	}
 
 }
