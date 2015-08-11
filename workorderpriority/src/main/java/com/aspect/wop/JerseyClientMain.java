@@ -42,7 +42,7 @@ public class JerseyClientMain {
 	     	//wm.getListOfIds();
 
 		} catch (JsonParseException  jx) {
-			// TODO Auto-generated catch block
+		
 			LOGGER.log(Level.SEVERE, "Exception occur", jx);
 			//ex.printStackTrace();
 		}  catch (JsonMappingException  jmx) {
