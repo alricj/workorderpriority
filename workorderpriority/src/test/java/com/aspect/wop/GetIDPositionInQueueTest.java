@@ -14,7 +14,7 @@ public class GetIDPositionInQueueTest {
 	public void testGetIDPositionInQueue() {
 		
 		JerseyClientMain client = new JerseyClientMain();
-		long id=0l;
+		long id=273830789187502477l;
 		assertTrue("The value of the ID should be a long greater than 0 taken from the previous IDs entered", id > 0);
 		try {
 			client.getIDPositionInQueue(id);
