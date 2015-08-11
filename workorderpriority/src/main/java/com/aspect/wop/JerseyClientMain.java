@@ -27,7 +27,6 @@ public class JerseyClientMain {
 	public static void main(String[] args) {
 		
 		JerseyClientMain wm = new JerseyClientMain();
-		//wm.callHello1();
 		
 		long id = 6362129667659802038l;
      	try {
@@ -182,15 +181,18 @@ public class JerseyClientMain {
 			   throw new RuntimeException("Failed : HTTP error code : "
 				+ response.getStatus());
 		}
-		//System.out.println();
-		//System.out.println();
 		String output = response.getEntity(String.class);;
 		if(StringUtils.isNotEmpty(output)){
-			if(StringUtils.equals(mediaType, "application/json")&&!scenario.equals("addIDToQueue")){
+			if(StringUtils.equals(mediaType, "application/json")&&(scenario.equals("getListOfIds"))){
 				jsonPrettyPrint(output);
-			}else{
+			}else if(StringUtils.equals(mediaType, "application/json")
+					&&(scenario.equals("getAndRemoveTopId")
+					||scenario.equals("getIDPositionInQueue")||scenario.equals("addIDToQueue"))){
+				jsonPrettyPrintWO(output);
 				  
-				  System.out.println(output);
+			}else {
+				System.out.println(output);
+				
 			}
 		}else System.out.println("No result");
 		
@@ -215,6 +217,21 @@ public class JerseyClientMain {
 		System.out.println("-----------End SORTED List--------------");
 
 	}
+	
+	private void jsonPrettyPrintWO(String jsonStr) throws JsonParseException, JsonMappingException, IOException{
+		ObjectMapper mapper = new ObjectMapper();
+		WorkOrder wo = mapper.readValue(jsonStr, WorkOrder.class);
+		
+	    System.out.println("ID: " + wo.getId());
+	    System.out.println("Date: " + wo.getDate());
+	    System.out.println("Time: " + wo.getTimeMilisec());
+	    System.out.println("Rank: " + wo.getRank());
+	    //System.out.println("Class rank id: " + wo.getWoclassInt());
+	    System.out.println("Class: " + wo.getWoclass());
+	    System.out.println("________________________________________");
+	    System.out.println();
+
+	}
 
 	
 
@@ -229,25 +246,7 @@ public class JerseyClientMain {
 
 	}
 	
-	
-	public void callHello2() throws JsonParseException, JsonMappingException, IOException{
-		String method="GET";
-		String mediaType="application/json";
-		String url="http://localhost:8080/workorderpriority/rest/hello2?param=Alric";
-		makeServiceCall(mediaType, url, method,"");
-//		Client client = Client.create();
-//		WebResource webResource = client.resource(url);
-//		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON)
-//                .get(ClientResponse.class);
-//		if (response.getStatus() != 200) {
-//			   throw new RuntimeException("Failed : HTTP error code : "
-//				+ response.getStatus());
-//		}
-//
-//	   String output = response.getEntity(String.class);
-//	   System.out.println(output);
 
-	}
 
 }
 
