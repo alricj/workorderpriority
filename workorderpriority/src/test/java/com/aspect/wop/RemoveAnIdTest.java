@@ -10,22 +10,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class RemoveAnIdTest {
-	static long id =0;
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	     String ID = System.getProperty("ID");
-	     id=Integer.valueOf("ID");
-	     System.out.println(id);
-	    // logger.info("Reading config file : " + fileName);
-	}
-
+	long id =273830789187502477l;
 	@Test
 	public void testRemoveAnId() {
 		JerseyClientMain client = new JerseyClientMain();
-		long theID=id;
+
 		assertTrue("The value of the ID should be a long greater than 0, taken from the previous IDs entered", id > 0);
 		try {
-			client.removeAnId(theID);
+			client.removeAnId(id);
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
