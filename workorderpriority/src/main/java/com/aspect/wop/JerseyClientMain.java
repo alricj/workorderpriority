@@ -27,7 +27,7 @@ public class JerseyClientMain {
 	public static void main(String[] args) {
 		
 		JerseyClientMain wm = new JerseyClientMain();
-		
+		 
 		long id = 6362129667659802038l;
      	try {
      		Handler fileHandler  = new FileHandler("./wo.formatter.log");
