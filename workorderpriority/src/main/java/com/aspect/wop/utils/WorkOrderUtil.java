@@ -16,7 +16,7 @@ import org.apache.commons.math3.random.RandomDataGenerator;
 import com.aspect.wop.pojo.WorkOrder;
 import com.aspect.wop.queue.Queue;
 /**
- * the provides the helper methods for the application
+ * provides the helper methods for the application
  * @author Alric
  *
  */
@@ -69,7 +69,7 @@ public final class WorkOrderUtil implements Serializable {
 	 * @param max
 	 * @return
 	 */
-	public static long getRandLong(long min, long max ) {
+	public static long getRandLong(final long min, final long max ) {
 		RandomDataGenerator randomData = new RandomDataGenerator( );
 	    long number = randomData.nextLong(min,max);
 	    return number;
@@ -106,8 +106,8 @@ public final class WorkOrderUtil implements Serializable {
 	 * @param agedTime
 	 * @return
 	 */
-	public static long getPriorityRank(long agedTime){
-		return (int) Math.max(3, agedTime*Math.log(agedTime));
+	public static long getPriorityRank(final long agedTime){
+		return (long) Math.max(3, agedTime*Math.log(agedTime));
 	}
 	
 	/**
@@ -115,8 +115,8 @@ public final class WorkOrderUtil implements Serializable {
 	 * @param agedTime
 	 * @return
 	 */
-	public static  long getVIPRank(long agedTime){
-		return (int) Math.max(3, (2*agedTime)*Math.log(agedTime));
+	public static  long getVIPRank(final long agedTime){
+		return  (long) Math.max(3, (2*agedTime)*Math.log(agedTime));
 	}
 	
 	
@@ -129,7 +129,7 @@ public final class WorkOrderUtil implements Serializable {
 	 * @param id
 	 * @return
 	 */
-	public static String[] determineIntClass(long id){
+	public static String[] determineIntClass(final long id){
         String[] theclass=new String[2];
 		int retClassOdId=0;
 		if (id % 15 == 0) 
