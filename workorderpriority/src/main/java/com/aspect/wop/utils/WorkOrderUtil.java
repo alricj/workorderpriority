@@ -1,7 +1,6 @@
 package com.aspect.wop.utils;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,8 +19,7 @@ import com.aspect.wop.queue.Queue;
  * @author Alric
  *
  */
-public final class WorkOrderUtil implements Serializable {
-	private static final long serialVersionUID = 16788L;
+public final class WorkOrderUtil  {
 
 	private static final Logger LOGGER = Logger.getLogger(WorkOrderUtil.class.getName());
 	
@@ -32,7 +30,7 @@ public final class WorkOrderUtil implements Serializable {
 	public static long MAX_ID=9223372036854775807l; // 64bytes
 	public static long A_1000_MILISEC_IN_A_SEC=1000;
 	private static String ENDPOINT_PROPERTIES_FILE = "endpoint.properties";
-	// just for testing
+	
 	public static Queue staticQUE=new Queue();
 	public static WorkOrder WO = null;
 	private static Map<String, String> endPointProp = null;
